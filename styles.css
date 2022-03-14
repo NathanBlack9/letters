@@ -20,6 +20,7 @@ html::-webkit-scrollbar-thumb {
 *::after {
   box-sizing: border-box;
   margin: 0;
+  cursor: none;
 }
 
 h1,
@@ -231,10 +232,50 @@ p {
   font-size: 12px;
   font-weight: 100;
   color: #ccc;
-
 }
 
 p span {
   color: white;
   font-weight: bold;
+}
+
+a {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.cursor {
+  position: fixed;
+  background-color: #c7093a;
+  z-index: 11111;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  user-select: none;
+  pointer-events: none;
+  transform: scale(1);
+  transition: transform 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) ;
+}
+
+.cursor.active {
+  transform: scale(0);
+}
+
+.follower {
+  border: 2px solid #c7093a;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  user-select: none;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) ;
+  z-index: 11111;
+}
+
+.follower.active {
+  transform: scale(1.5);
+  background: #c7093a;
+  z-index: 0;
 }
