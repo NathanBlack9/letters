@@ -1,25 +1,42 @@
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
   scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 4px;
+  background-color: black;
+  box-shadow: inset -1px 0px 0px white;
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+  background-color: white;
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
-	margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-h1,h2,h3,
-h4,h5,h6 {
-	margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   color: white;
   background-color: black;
+  position: relative;
 }
 
 body::selection {
@@ -28,13 +45,13 @@ body::selection {
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 textarea {
-	font-family: inherit;
-	font-weight: inherit;
+  font-family: inherit;
+  font-weight: inherit;
 }
 
 .area {
@@ -45,7 +62,7 @@ textarea {
   flex-direction: row;
 }
 
-.area__left, 
+.area__left,
 .area__right {
   width: 50%;
   position: relative;
@@ -77,7 +94,7 @@ textarea {
   padding: 30px 30px 30px 50px;
 }
 
-.area__right::after, 
+.area__right::after,
 .area__right::before {
   content: '';
   position: absolute;
@@ -85,7 +102,7 @@ textarea {
   background-color: black;
   width: 25px;
   height: 15px;
-} 
+}
 
 .area__right::before {
   bottom: 205px;
@@ -103,10 +120,13 @@ textarea {
 .area__top {
   padding: 35px;
   border: 1px solid white;
+  height: 18vh;
 }
 
 .area__bottom {
   padding: 35px;
+  height: 76vh;
+  /* 100vh для появления скролла */
 }
 
 .area__origin {
@@ -121,7 +141,7 @@ textarea {
   position: relative;
 }
 
-.area__origin-item > p {
+.area__origin-item>p {
   max-width: 70%;
 }
 
@@ -146,6 +166,62 @@ textarea {
   margin-bottom: 0.8em;
 }
 
+.area__description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+dl.area__description-item {
+  width: 20%;
+  position: relative;
+}
+
+dl.area__description-item::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 0;
+  width: 1px;
+  height: 75%;
+  background-color: white;
+}
+
+table.area__description-item {
+  width: 75%;
+}
+
+dl.area__description-item>div:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+dl.area__description-item>div dd {
+  margin-left: 20px;
+}
+
+/* dl.area__description-item > div dd:nth-child(2) {
+  display: inline;
+}
+
+dl.area__description-item > div dt:first-child {
+  display: inline-block;
+}
+
+dl.area__description-item > div dt {
+  min-width: 60px;
+} */
+
+table.area__description-item th {
+  font-weight: 100;
+}
+
+table.area__description-item td,
+table.area__description-item th {
+  text-align: center;
+}
+
 h2 {
   font-size: 22px;
   letter-spacing: 2.5px;
@@ -162,4 +238,3 @@ p span {
   color: white;
   font-weight: bold;
 }
-
