@@ -1,0 +1,165 @@
+html {
+	box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+h1,h2,h3,
+h4,h5,h6 {
+	margin: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  color: white;
+  background-color: black;
+}
+
+body::selection {
+  background-color: white;
+  color: black;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+textarea {
+	font-family: inherit;
+	font-weight: inherit;
+}
+
+.area {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+
+.area__left, 
+.area__right {
+  width: 50%;
+  position: relative;
+}
+
+.area__left {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.area__left::after {
+  content: '';
+  position: absolute;
+  right: -25px;
+  bottom: 0;
+  background-color: white;
+  width: 25px;
+  height: 235px;
+}
+
+.area__left img {
+  margin-right: 40px;
+}
+
+.area__right {
+  padding: 30px 30px 30px 50px;
+}
+
+.area__right::after, 
+.area__right::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  background-color: black;
+  width: 25px;
+  height: 15px;
+} 
+
+.area__right::before {
+  bottom: 205px;
+}
+
+.area__right::after {
+  bottom: 175px;
+}
+
+.area__inner {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+.area__top {
+  padding: 35px;
+  border: 1px solid white;
+}
+
+.area__bottom {
+  padding: 35px;
+}
+
+.area__origin {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+
+.area__origin-item {
+  width: 50%;
+  position: relative;
+}
+
+.area__origin-item > p {
+  max-width: 70%;
+}
+
+
+.area__origin-item:first-child:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 75%;
+  background-color: white;
+}
+
+.area__variables {
+  width: 50%;
+  margin-left: auto;
+  margin-bottom: 60px;
+}
+
+.area__variables p:not(:last-child) {
+  margin-bottom: 0.8em;
+}
+
+h2 {
+  font-size: 22px;
+  letter-spacing: 2.5px;
+}
+
+p {
+  font-size: 12px;
+  font-weight: 100;
+  color: #ccc;
+
+}
+
+p span {
+  color: white;
+  font-weight: bold;
+}
+
