@@ -1,0 +1,28 @@
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+package-lock.json
+.jshintrc
+desktop.ini
+src/assets/img/*.mp4
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+#misc
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# production
+
+# testing
+/coverage
