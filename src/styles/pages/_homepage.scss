@@ -12,7 +12,22 @@
   }
 
   &__right {
-    padding: 85px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      background-color: $black;
+      box-shadow: inset -1px 0px 0px $white;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: $white;
+    }
+
+    &-item {
+      padding: 85px;
+    }
   }
 
   &__left {
@@ -207,9 +222,13 @@
 
     &>img {
       position: absolute;
-      top: 1%;
-      right: -10%;
-      transform: translate(-50%, -50%);
+      top: -41%;
+      right: -5%;
+      // transform: rotate(0deg);
+    }
+
+    &-star {
+      transition: all 300ms linear;
     }
   }
 }

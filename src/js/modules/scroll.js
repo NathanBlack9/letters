@@ -1,17 +1,34 @@
 
 $(document).ready(function () {
-  $(window).bind('mousewheel', function (e) {
+  $(window).bind('mousewheel', function (event) {
 
-    const $letter = $('.area__left');
+    const $letter = $('.js-scroll-left');
+    const $info = $('.js-scroll-right');
+    const $letterWidth = $letter[0].scrollHeight; // ширина первого блока с БУКВОЙ
+    const $infoHeight = $info[0].scrollHeight; // высота блока с инфой 
+    const $coefficient = $infoHeight / $letterWidth;
+
+    /* Scroll Animations */
+    const $star = $('.js-star-animate');
+
+    // console.log($letter[0].scrollHeight);
+    // console.log($letter[0].clientHeight);
+    // console.log($letter[0].offsetHeight);
+
     var $scrollPos = $letter.scrollTop();
 
-    if (e.originalEvent.wheelDelta / 120 > 0) {
+    if (event.originalEvent.wheelDelta / 120 > 0) {
       // console.log('scrolling up !');
-      $letter.stop().animate({ scrollTop: $scrollPos - 200 }, 1000);
+      $letter.stop().animate({ scrollTop: ($scrollPos - 200) * $coefficient }, 500);
+      $info.stop().animate({ scrollTop: $scrollPos - 200 }, 500);
+
     }
     else {
       // console.log('scrolling down !');
-      $letter.stop().animate({ scrollTop: $scrollPos + 200 }, 1000);
+      $letter.stop().animate({ scrollTop: ($scrollPos + 200) * $coefficient }, 500);
+      $info.stop().animate({ scrollTop: $scrollPos + 200 }, 500);
+
+      // matrix(0.939693, 0.34202, -0.34202, 0.939693, 0, 0)
     }
   })
 });

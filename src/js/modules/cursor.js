@@ -5,7 +5,7 @@ function changeCursor() {
 
   let followerPosX = 0;
   let followerPosY = 0;
- 
+
   let cursorPosX = 0;
   let cursorPosY = 0;
 
@@ -31,7 +31,7 @@ function changeCursor() {
     }
   });
 
-  $(window).mousemove(function (e) { 
+  $(window).mousemove(function (e) {
     cursorPosX = e.clientX;
     cursorPosY = e.clientY;
   });
