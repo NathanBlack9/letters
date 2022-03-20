@@ -1,0 +1,82 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 30px;
+
+    a:first-child {
+      color: $black;
+      font-family: Steelfish;
+      font-size: 36px;
+      padding: 35px 10px;
+    }
+  }
+
+  &__about-link {
+    position: relative;
+    top: 25px;
+    height: 30px;
+    width: 30px;
+    /* transition: none; */
+    transition: transform 0.8s cubic-bezier(0.75, -1.27, 0.3, 2.33);
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+
+    &::before {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &::after {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &::before,
+    &::after,
+    & span,
+    & span::before,
+    & span::after {
+      display: block;
+      position: relative;
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      box-sizing: border-box;
+      background-color: $white;
+    }
+
+    &::before,
+    &::after,
+    & span::before,
+    & span::after {
+      content: '';
+      position: absolute;
+    }
+
+    span {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &::before {
+        left: 12px;
+      }
+
+      &::after {
+        right: 12px;
+      }
+    }
+  }
+}
