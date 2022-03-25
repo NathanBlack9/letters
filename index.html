@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <header class="header">
+  <header class="header js-header">
     <div class="header__inner">
       <a href="#menu-popup" class="header__menu">А — Я</a>
       <a href="#about" class="header__about-link"><span></span></a>
@@ -219,13 +219,33 @@
     </div>
   </section>
 
+
+
   <script src="./build/js/vendor/jquery-3.6.0.min.js"></script>
   <script src="./build/js/vendor/jquery.selectric.min.js"></script>
   <script src="./build/js/vendor/slick.min.js"></script>
   <!-- <script src="./build/js/vendor/jquery.rotate.js"></script> -->
   <!-- <script src="./build/js/vendor/SmoothScroll.js"></script> -->
   <script src="./build/js/vendor/gsap.min.js"></script>
+  <script src="./build/js/vendor/ScrollMagic.js"></script>
   <script src="./build/js/common-min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      var controller = new ScrollMagic.Controller();
+
+      new ScrollMagic.Scene({
+        duration: 1000, // the scene should last for a scroll distance of 100px
+        offset: 50 // start this scene after scrolling for 50px
+      })
+        .setPin('.js-scroll-left') // pins the element for the the scene's duration
+        .addTo(controller) // assign the scene to the controller
+        .on("add", function (event) {
+            console.log('Scene was added to a new controller.');
+        });
+    });
+  </script>
 </body>
 
 </html>
