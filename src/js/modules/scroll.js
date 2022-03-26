@@ -1,37 +1,83 @@
-
 $(document).ready(function () {
-  $(window).bind('mousewheel', function (event) {
+  $(window).bind('mousewheel', function () {
+    const $window = $(window);
+    const $intro = $('.intro');
+    const $introHeight = $intro.outerHeight(true);
 
-    const $letter = $('.js-scroll-left');
-    const $info = $('.js-scroll-right');
-    const $letterWidth = $letter[0].scrollHeight; // ширина первого блока с БУКВОЙ
-    const $infoHeight = $info[0].scrollHeight; // высота блока с инфой 
-    const $coefficient = $infoHeight / $letterWidth;
+    if ($window.scrollTop() >= ($introHeight / 4)) {
+      var controller = new ScrollMagic.Controller();
 
-    /* Scroll Animations */
-    const $star = $('.js-star-animate');
+      var wipeAnimation = new TimelineMax()
+        .fromTo(".js-scroll-left", 1, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })  // in from left
+        .fromTo(".js-scroll-right", 1, { y: "-100%" }, { y: "0%", ease: Linear.easeNone }); // in from top
 
-    // console.log($letter[0].scrollHeight);
-    // console.log($letter[0].clientHeight);
-    // console.log($letter[0].offsetHeight);
-
-    var $scrollPos = $letter.scrollTop();
-
-    if (event.originalEvent.wheelDelta / 120 > 0) {
-      // console.log('scrolling up !');
-      $letter.stop().animate({ scrollTop: ($scrollPos - 200) * $coefficient }, 500);
-      $info.stop().animate({ scrollTop: $scrollPos - 200 }, 500);
-
+      new ScrollMagic.Scene({
+        triggerElement: ".area",
+        triggerHook: "onLeave",
+        duration: "300%"
+      })
+        .setClassToggle(".area", "animating")
+        .setPin(".area")
+        .setTween(wipeAnimation)
+        .addTo(controller);
     }
-    else {
-      // console.log('scrolling down !');
-      $letter.stop().animate({ scrollTop: ($scrollPos + 200) * $coefficient }, 500);
-      $info.stop().animate({ scrollTop: $scrollPos + 200 }, 500);
 
-      // matrix(0.939693, 0.34202, -0.34202, 0.939693, 0, 0)
-    }
   })
 });
+
+// $(document).ready(function () {
+//   $(window).bind('mousewheel', function (event) {
+
+//     if ($('.area').hasClass('animating')) {
+//       return;
+//     } else {
+//       const $letter = $('.js-scroll-left');
+//       const $info = $('.js-scroll-right');
+//       const $letterWidth = $letter[0].scrollHeight; // ширина первого блока с БУКВОЙ
+//       const $infoHeight = $info[0].scrollHeight; // высота блока с инфой
+//       const $coefficient = $infoHeight / $letterWidth;
+
+//       var $scrollPos = $letter.scrollTop();
+
+//       if (event.originalEvent.wheelDelta / 120 > 0) {
+//         // console.log('scrolling up !');
+//         $letter.stop().animate({ scrollTop: ($scrollPos - 200) * $coefficient }, 300);
+//         $info.stop().animate({ scrollTop: $scrollPos - 200 }, 300);
+
+//       }
+//       else {
+//         // console.log('scrolling down !');
+//         $letter.stop().animate({ scrollTop: ($scrollPos + 200) * $coefficient }, 300);
+//         $info.stop().animate({ scrollTop: $scrollPos + 200 }, 300);
+
+//         // matrix(0.939693, 0.34202, -0.34202, 0.939693, 0, 0)
+//       }
+//     }
+//   })
+// });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   // init
+//   var controller = new ScrollMagic.Controller();
+
+//   // define movement of panels
+//   var wipeAnimation = new TimelineMax()
+//     .fromTo(".js-scroll-left", 1, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })  // in from left
+//     // .fromTo("section.panel.green", 1, { x: "100%" }, { x: "0%", ease: Linear.easeNone })  // in from right
+//     .fromTo(".js-scroll-right", 1, { y: "-100%" }, { y: "0%", ease: Linear.easeNone }); // in from top
+
+//   // create scene to pin and link animation
+//   new ScrollMagic.Scene({
+//     triggerElement: ".area",
+//     triggerHook: "onLeave",
+//     duration: "300%"
+//   })
+//     .setClassToggle(".area", "animating")
+//     .setPin(".area")
+//     .setTween(wipeAnimation)
+//     .addTo(controller);
+// });
+
 
 // $(function () {
 //   if (!$('.js-scroll').length) return;

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <header class="header js-header">
+  <header class="header js-header highlighted">
     <div class="header__inner">
       <a href="#menu-popup" class="header__menu">А — Я</a>
       <a href="#about" class="header__about-link"><span></span></a>
@@ -20,7 +20,18 @@
   <div class="cursor"></div>
   <div class="follower"></div>
 
-  <section class="area">
+  <section class="intro">
+    <span></span>
+    <div class="intro__title">
+      <img src="./build/img/intro.svg" alt="intro">
+    </div>
+    <a href="#area" class="intro__scroll-down">
+      Скролить вниз
+    </a>
+    <span></span>
+  </section>
+
+  <section class="area" id="area">
     <div class="area__left js-scroll-left">
       <div id="first" class="area__left-item">
         <img src="./build/img/big.png" alt="A">
@@ -130,7 +141,7 @@
         <div class="area__inner">
           <div class="area__top">
             <div class="area__origin">
-              <h2 class="area__origin-title">Происхождение</h2>
+              <h2 class="area__origin-title">Происхождение2</h2>
               <p>
                 Восходит к греческой Αα «альфа», а та — к финикийскому «алеф», обозначавшему гортанный согласный ʔ;
                 наиболее распространённая версия возводит начертание алефа к изображению головы быка. По-старославянски
@@ -224,27 +235,29 @@
   <script src="./build/js/vendor/jquery-3.6.0.min.js"></script>
   <script src="./build/js/vendor/jquery.selectric.min.js"></script>
   <script src="./build/js/vendor/slick.min.js"></script>
-  <!-- <script src="./build/js/vendor/jquery.rotate.js"></script> -->
+  <script src="./build/js/vendor/jquery.rotate.js"></script>
   <!-- <script src="./build/js/vendor/SmoothScroll.js"></script> -->
   <script src="./build/js/vendor/gsap.min.js"></script>
-  <script src="./build/js/vendor/ScrollMagic.js"></script>
+  <script src="./build/js/vendor/ScrollMagic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+  <script src="./build/js/vendor/debug.addIndicators.min.js"></script>
   <script src="./build/js/common-min.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    // document.addEventListener('DOMContentLoaded', function() {
 
-      var controller = new ScrollMagic.Controller();
+    //   var controller = new ScrollMagic.Controller();
 
-      new ScrollMagic.Scene({
-        duration: 1000, // the scene should last for a scroll distance of 100px
-        offset: 50 // start this scene after scrolling for 50px
-      })
-        .setPin('.js-scroll-left') // pins the element for the the scene's duration
-        .addTo(controller) // assign the scene to the controller
-        .on("add", function (event) {
-            console.log('Scene was added to a new controller.');
-        });
-    });
+    //   new ScrollMagic.Scene({
+    //     duration: 1000, // the scene should last for a scroll distance of 100px
+    //     offset: 50 // start this scene after scrolling for 50px
+    //   })
+    //     .setPin('.js-scroll-left') // pins the element for the the scene's duration
+    //     .addTo(controller) // assign the scene to the controller
+    //     .on("add", function (event) {
+    //         console.log('Scene was added to a new controller.');
+    //     });
+    // });
   </script>
 </body>
 

@@ -5,13 +5,15 @@ html {
 
 html, body {
   &::-webkit-scrollbar {
-    width: 4px;
-    background-color: $black;
-    box-shadow: inset -1px 0px 0px $white;
+    // width: 4px;
+    // background-color: $black;
+    // box-shadow: inset -1px 0px 0px $white;
+    width: 0;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $white;
+    // background-color: $white;
+    width: 0;
   }
 }
 

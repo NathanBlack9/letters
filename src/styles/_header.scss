@@ -5,6 +5,12 @@
   box-sizing: border-box;
   z-index: 3;
 
+  &.highlighted {
+    .header__menu {
+      color: $white;
+    }
+  }
+
   &__inner {
     display: flex;
     flex-direction: row;

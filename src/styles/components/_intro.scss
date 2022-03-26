@@ -1,0 +1,85 @@
+.intro {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: $black;
+  z-index: 1;
+
+  &__title {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 76px;
+      height: 76px;
+      transform: translate(-50%, -50%);
+      background: url('/build/img/intro_star.svg') no-repeat 50%;
+    }
+  }
+
+  &._animated {
+    .intro__title img {
+      transition: all 0.5s linear;
+      animation: intro_rotate 25s linear infinite;
+    }
+  }
+
+  &__scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.165em;
+    color: $white;
+    padding: 20px;
+    z-index: 3;
+    display: block;
+  }
+
+  > span {
+    z-index: 3;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 30px;
+    transform: scaleY(1);
+    transform-origin: 0 0;
+    border-radius: 10px;
+    background-color: $white;
+    transition: all 0.5s linear;
+    animation: intro_decor 1800ms linear infinite;
+
+    &:first-child {
+      top: 10px;
+    }
+
+    &:last-child {
+      top: calc(100% - 30px);
+    }
+  }
+
+  @keyframes intro_rotate {
+    from {
+      transform: rotate(-360deg);
+    }
+  }
+
+  @keyframes intro_decor {
+    from {
+      height: 0;
+      transform: scaleY(0);
+      transform-origin: 0 0;
+    }
+  }
+}
