@@ -1,27 +1,56 @@
 $(document).ready(function () {
-  $(window).bind('mousewheel', function () {
-    const $window = $(window);
-    const $intro = $('.intro');
-    const $introHeight = $intro.outerHeight(true);
+  const $window = $(window);
+  const $intro = $('.intro');
+  const $area = $('.area');
+  const $introHeight = $intro.outerHeight(true);
+  var controller = new ScrollMagic.Controller();
 
-    if ($window.scrollTop() >= ($introHeight / 4)) {
-      var controller = new ScrollMagic.Controller();
+  const $letter = $('.js-scroll-left');
+  const $info = $('.js-scroll-right');
+  const $letterWidth = $letter[0].scrollHeight; // ширина первого блока с БУКВОЙ
+  const $infoHeight = $info[0].scrollHeight; // высота блока с инфой
+  const $coefficient = $infoHeight / $letterWidth;
 
-      var wipeAnimation = new TimelineMax()
-        .fromTo(".js-scroll-left", 1, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })  // in from left
-        .fromTo(".js-scroll-right", 1, { y: "-100%" }, { y: "0%", ease: Linear.easeNone }); // in from top
+  var $scrollPos = $letter.scrollTop();
 
-      new ScrollMagic.Scene({
-        triggerElement: ".area",
-        triggerHook: "onLeave",
-        duration: "300%"
-      })
-        .setClassToggle(".area", "animating")
-        .setPin(".area")
-        .setTween(wipeAnimation)
-        .addTo(controller);
+  var wipeAnimation = new TimelineMax()
+    .fromTo(".js-scroll-left", 1, { x: "-110%" }, { x: "0%", ease: Linear.easeNone })  // in from left
+    .fromTo(".js-scroll-right", 1, { y: "-100%" }, { y: "0%", ease: Linear.easeNone }); // in from top
+
+  var $scene = new ScrollMagic.Scene({
+    triggerElement: ".area",
+    triggerHook: "onLeave",
+    duration: "300%"
+  })
+    .addIndicators()
+    .setPin(".area")
+    .setTween(wipeAnimation)
+
+
+  $(window).bind('mousewheel', function (event) {
+    $scrollPos = $letter.scrollTop();
+    console.log($window.scrollTop() >= ($introHeight), $window.scrollTop() <= ($introHeight + 2900), ($scrollPos == 0))
+    if ($window.scrollTop() >= ($introHeight) && $window.scrollTop() <= ($introHeight + 2900) && ($scrollPos == 0)) {
+      $scene.setClassToggle(".area", "animating").addTo(controller);
     }
 
+    if ($area.hasClass('animating')) {
+      return;
+    } else {
+
+      if (event.originalEvent.wheelDelta / 120 > 0) {
+        console.log('scrolling up !');
+        $letter.stop().animate({ scrollTop: ($scrollPos - 200) * $coefficient }, 300);
+        $info.stop().animate({ scrollTop: $scrollPos - 200 }, 300);
+
+      }
+      else {
+        console.log('scrolling down !');
+        console.log($scrollPos);
+        $letter.stop().animate({ scrollTop: ($scrollPos + 200) * $coefficient }, 300);
+        $info.stop().animate({ scrollTop: $scrollPos + 200 }, 300);
+      }
+    }
   })
 });
 
@@ -50,7 +79,6 @@ $(document).ready(function () {
 //         $letter.stop().animate({ scrollTop: ($scrollPos + 200) * $coefficient }, 300);
 //         $info.stop().animate({ scrollTop: $scrollPos + 200 }, 300);
 
-//         // matrix(0.939693, 0.34202, -0.34202, 0.939693, 0, 0)
 //       }
 //     }
 //   })
