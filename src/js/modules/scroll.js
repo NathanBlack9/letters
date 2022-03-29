@@ -25,13 +25,14 @@ $(document).ready(function () {
     .addIndicators()
     .setPin(".area")
     .setTween(wipeAnimation)
+    .addTo(controller)
 
 
   $(window).bind('mousewheel', function (event) {
     $scrollPos = $letter.scrollTop();
     console.log($window.scrollTop() >= ($introHeight), $window.scrollTop() <= ($introHeight + 2900), ($scrollPos == 0))
     if ($window.scrollTop() >= ($introHeight) && $window.scrollTop() <= ($introHeight + 2900) && ($scrollPos == 0)) {
-      $scene.setClassToggle(".area", "animating").addTo(controller);
+      $scene.setClassToggle(".area", "animating");
     }
 
     if ($area.hasClass('animating')) {

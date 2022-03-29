@@ -19,7 +19,7 @@
       width: 76px;
       height: 76px;
       transform: translate(-50%, -50%);
-      background: url('/build/img/intro_star.svg') no-repeat 50%;
+      background: url('../img/intro_star.svg') no-repeat 50%;
     }
   }
 
@@ -46,7 +46,7 @@
     display: block;
   }
 
-  > span {
+  >span {
     z-index: 3;
     position: absolute;
     left: 50%;
