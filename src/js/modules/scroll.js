@@ -5,6 +5,7 @@ $(document).ready(function () {
   const $introHeight = $intro.outerHeight(true);
   var controller = new ScrollMagic.Controller();
 
+  const $header = $('.js-header');
   const $letter = $('.js-scroll-left');
   const $info = $('.js-scroll-right');
   const $letterWidth = $letter[0].scrollHeight; // ширина первого блока с БУКВОЙ
@@ -30,10 +31,14 @@ $(document).ready(function () {
 
   $(window).bind('mousewheel', function (event) {
     $scrollPos = $letter.scrollTop();
-    console.log($window.scrollTop() >= ($introHeight), $window.scrollTop() <= ($introHeight + 2900), ($scrollPos == 0))
-    if ($window.scrollTop() >= ($introHeight) && $window.scrollTop() <= ($introHeight + 2900) && ($scrollPos == 0)) {
-      $scene.setClassToggle(".area", "animating");
+    // console.log($window.scrollTop() >= ($introHeight), $window.scrollTop() <= ($introHeight + 2900), ($scrollPos == 0))
+    if ($window.scrollTop() >= ($introHeight)) {
+      $header.removeClass('highlighted');
+
+      if ($window.scrollTop() <= ($introHeight + 2900) && ($scrollPos == 0))
+        $scene.setClassToggle(".area", "animating");
     }
+    else $header.addClass('highlighted');
 
     if ($area.hasClass('animating')) {
       return;
